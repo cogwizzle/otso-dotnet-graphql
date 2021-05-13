@@ -1,0 +1,9 @@
+namespace <%= props.modelNamespace %>
+{
+  public class <%= props.modelName %>
+  {
+<%= props.properties.map((property) => 
+`    public ${property.type} ${property.name} { get; set; }`
+).join('\n') %>
+  }
+}
