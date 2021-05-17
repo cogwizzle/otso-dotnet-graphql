@@ -53,8 +53,6 @@ module.exports = {
     const modelNamespace = pascalCase(results.namespace);
     const properties = await requestProperty(prompt);
 
-    info(`Inputs: ${modelName} ${modelNamespace} ${JSON.stringify(properties, null, 2)}`)
-
     await generate({
       template: 'model.cs.ejs',
       target: `model/${modelNamespace}/${modelName}.cs`,
