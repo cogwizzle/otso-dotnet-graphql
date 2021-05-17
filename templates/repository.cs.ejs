@@ -1,0 +1,37 @@
+namespace <%= props.modelNamespace %>
+{
+  public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
+  {
+    public <%= props.modelName %>Repository(DbContext dbContext)
+    {
+      this.dbContext = dbContext;
+    }
+
+    public <%= props.modelName %> Get<%= props.modelName %>(int id)
+    {
+      return dbContext.<%= props.modelName %>s.First((x => x.id == id));
+    }
+
+    public <%= props.modelName %>[] Get<%= props.modelName %>s()
+    {
+      return dbContext.<%= props.modelName %>s;
+    }
+
+    public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value)
+    {
+      dbContext.<%= props.modelName %>s.Add(value);
+      return value;
+    }
+
+    public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
+    {
+      return this.create(value);
+    }
+
+    public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
+    {
+      dbContext.<%= props.modelName %>s.Remove(value);
+      return value;
+    }
+  }
+}

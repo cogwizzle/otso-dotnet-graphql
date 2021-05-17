@@ -53,11 +53,39 @@ module.exports = {
     const modelNamespace = pascalCase(results.namespace);
     const properties = await requestProperty(prompt);
 
-    info(`Inputs: ${modelName} ${modelNamespace} ${JSON.stringify(properties, null, 2)}`)
-
     await generate({
       template: 'model.cs.ejs',
       target: `model/${modelNamespace}/${modelName}.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties,
+      }
+    })
+
+    await generate({
+      template: 'interface-repository.cs.ejs',
+      target: `repository/${modelNamespace}/I${modelName}Repository.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties,
+      }
+    })
+
+    await generate({
+      template: 'repository.cs.ejs',
+      target: `repository/${modelNamespace}/${modelName}Repository.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties,
+      }
+    })
+
+    await generate({
+      template: 'interface-service.cs.ejs',
+      target: `service/${modelNamespace}/I${modelName}Service.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -79,6 +107,9 @@ module.exports = {
     // https://chillicream.com/docs/hotchocolate/get-started/#step-2-create-a-graphql-schema
 
     info(`Generate model at model/${modelNamespace}/${modelName}.cs`)
+    info(`Generate service at repository/${modelNamespace}/I${modelName}Repository.cs`)
+    info(`Generate service at repository/${modelNamespace}/${modelName}Repository.cs`)
+    info(`Generate service at service/${modelNamespace}/I${modelName}Service.cs`)
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
   },
 }

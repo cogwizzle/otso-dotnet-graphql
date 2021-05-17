@@ -1,30 +1,40 @@
+using System;
+using System.Collections.Generic;
+
 namespace <%= props.modelNamespace %>
 {
-  public class <%= props.modelName %>Service
+  public class <%= props.modelName %>Service: I<%= props.modelName %>Service
   {
-    public <%= props.modelName %> Get<%= props.modelName %>()
+    private readonly I<%= props.modelName %>Repository repository;
+
+    public <%= props.modelName %>Service(I<%= props.modelName %>Repository repository)
     {
-      throw new Exception("Not implemented");
+      this.repository = repository;
     }
 
-    public <%= props.modelName %> Get<%= props.modelName %>s()
+    public <%= props.modelName %> Get<%= props.modelName %>(int id)
     {
-      throw new Exception("Not implemented");
+      return respository.Get<%= props.modelName %>(id);
+    }
+
+    public <%= props.modelName %>[] Get<%= props.modelName %>s()
+    {
+      return repository.Get<%= props.modelName %>s();
     }
 
     public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented");
+      return repository.Create<%= props.modelName %>(value);
     }
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented");
+      return respository.Update<%= props.modelName %>(value);
     }
 
     public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented");
+      return resository.Delete<%= props.modelName %>(value);
     }
   }
 }
