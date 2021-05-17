@@ -2,29 +2,36 @@ namespace <%= props.modelNamespace %>
 {
   public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
   {
-    public <%= props.modelName %> Get<%= props.modelName %>()
+    public <%= props.modelName %>Repository(DbContext dbContext)
     {
-      throw new Exception("Not implemented.");
+      this.dbContext = dbContext;
+    }
+
+    public <%= props.modelName %> Get<%= props.modelName %>(int id)
+    {
+      return dbContext.<%= props.modelName %>s.First((x => x.id == id));
     }
 
     public <%= props.modelName %>[] Get<%= props.modelName %>s()
     {
-      throw new Exception("Not implemented.");
+      return dbContext.<%= props.modelName %>s;
     }
 
     public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented.");
+      dbContext.<%= props.modelName %>s.Add(value);
+      return value;
     }
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented.");
+      return this.create(value);
     }
 
     public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
     {
-      throw new Exception("Not implemented.");
+      dbContext.<%= props.modelName %>s.Remove(value);
+      return value;
     }
   }
 }
