@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace <%= props.modelNamespace %>
 {
-  public class <%= props.modelName %>Service
+  public class <%= props.modelName %>Service: I<%= props.modelName %>Service
   {
     public <%= props.modelName %> Get<%= props.modelName %>()
     {
