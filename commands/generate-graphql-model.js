@@ -65,7 +65,7 @@ module.exports = {
 
     await generate({
       template: 'interface-repository.cs.ejs',
-      target: `service/${modelNamespace}/I${modelName}Repository.cs`,
+      target: `repository/${modelNamespace}/I${modelName}Repository.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -75,7 +75,7 @@ module.exports = {
 
     await generate({
       template: 'repository.cs.ejs',
-      target: `service/${modelNamespace}/${modelName}Repository.cs`,
+      target: `repository/${modelNamespace}/${modelName}Repository.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -107,8 +107,8 @@ module.exports = {
     // https://chillicream.com/docs/hotchocolate/get-started/#step-2-create-a-graphql-schema
 
     info(`Generate model at model/${modelNamespace}/${modelName}.cs`)
-    info(`Generate service at service/${modelNamespace}/I${modelName}Repository.cs`)
-    info(`Generate service at service/${modelNamespace}/${modelName}Repository.cs`)
+    info(`Generate service at repository/${modelNamespace}/I${modelName}Repository.cs`)
+    info(`Generate service at repository/${modelNamespace}/${modelName}Repository.cs`)
     info(`Generate service at service/${modelNamespace}/I${modelName}Service.cs`)
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
   },
