@@ -25,7 +25,11 @@ namespace <%= props.modelNamespace %>
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      return this.create(value);
+      const entity = dbContext.<%= props.modelName %>s.First(x => x.id = value.id);
+<%= props.properties.map((property) => 
+`      entity.${property.name} = value.${property.name};`
+).join('\n') %>
+      dbContext.<%- props.modelName %>s.Update(entity);
     }
 
     public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
