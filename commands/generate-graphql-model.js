@@ -103,6 +103,16 @@ module.exports = {
       }
     })
 
+    await generate({
+      template: 'entity-configuration.cs.ejs',
+      target: `configuration/${modelNamespace}/${modelName}Configuration.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties
+      },
+    })
+
     // TODO alter Startup.cs file with this stuff
     // https://chillicream.com/docs/hotchocolate/get-started/#step-2-create-a-graphql-schema
 
