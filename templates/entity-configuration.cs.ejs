@@ -1,0 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace <%= props.modelNamespace %>.Data.Configuration
+{
+  public class <%= props.modelName %>Configuration: IEntityTypeConfiguration<<%= props.modelName %>>
+  {
+    public void Configure(EntityTypeBuilder<<%= props.modelName %>> builder)
+    {
+      builder
+        .HasKey(m => m.Id);
+
+      builder
+        .Property(m => m.Id)
+        .UseIdentityColumn();
+    }
+  }
+}
