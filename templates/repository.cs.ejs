@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace <%= props.modelNamespace %>
 {
   public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
@@ -12,7 +14,7 @@ namespace <%= props.modelNamespace %>
       return dbContext.<%= props.modelName %>s.First((x => x.id == id));
     }
 
-    public <%= props.modelName %>[] Get<%= props.modelName %>s()
+    public IList<<%= props.modelName %>> Get<%= props.modelName %>s()
     {
       return dbContext.<%= props.modelName %>s;
     }

@@ -3,7 +3,7 @@ namespace <%= props.modelNamespace %>
   public interface I<%= props.modelName %>Repository
   {
     public <%= props.modelName %> Get<%= props.modelName %>();
-    public <%= props.modelName %>[] Get<%= props.modelName %>s();
+    public IList<<%= props.modelName %>> Get<%= props.modelName %>s();
     public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value);
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value);
     public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value);

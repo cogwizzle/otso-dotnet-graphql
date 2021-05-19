@@ -17,7 +17,7 @@ namespace <%= props.modelNamespace %>
       return respository.Get<%= props.modelName %>(id);
     }
 
-    public <%= props.modelName %>[] Get<%= props.modelName %>s()
+    public IList<<%= props.modelName %>> Get<%= props.modelName %>s()
     {
       return repository.Get<%= props.modelName %>s();
     }
