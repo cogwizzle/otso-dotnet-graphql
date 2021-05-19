@@ -121,5 +121,6 @@ module.exports = {
     info(`Generate service at repository/${modelNamespace}/${modelName}Repository.cs`)
     info(`Generate service at service/${modelNamespace}/I${modelName}Service.cs`)
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
+    info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
   },
 }

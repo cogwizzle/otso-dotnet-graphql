@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace <%= props.modelNamespace %>
 {
   public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
@@ -12,7 +14,7 @@ namespace <%= props.modelNamespace %>
       return dbContext.<%= props.modelName %>s.First((x => x.id == id));
     }
 
-    public <%= props.modelName %>[] Get<%= props.modelName %>s()
+    public IList<<%= props.modelName %>> Get<%= props.modelName %>s()
     {
       return dbContext.<%= props.modelName %>s;
     }
@@ -25,7 +27,11 @@ namespace <%= props.modelNamespace %>
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      return this.create(value);
+      const entity = dbContext.<%= props.modelName %>s.First(x => x.id = value.id);
+<%= props.properties.map((property) => 
+`      entity.${property.name} = value.${property.name};`
+).join('\n') %>
+      dbContext.<%- props.modelName %>s.Update(entity);
     }
 
     public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
