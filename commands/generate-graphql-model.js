@@ -121,6 +121,28 @@ module.exports = {
       },
     })
 
+    await generate({
+      template: 'get-all.cs.ejs',
+      target: `${modelNamespace}/graphql/GetAll${props.modelName}.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties,
+        packageName,
+      },
+    })
+
+    await generate({
+      template: 'get-single.cs.ejs',
+      target: `${modelNamespace}/graphql/GetSingle${props.modelName}.cs`,
+      props: {
+        modelName,
+        modelNamespace,
+        properties,
+        packageName,
+      },
+    })
+
     // TODO alter Startup.cs file with this stuff
     // https://chillicream.com/docs/hotchocolate/get-started/#step-2-create-a-graphql-schema
 
@@ -130,5 +152,7 @@ module.exports = {
     info(`Generate service at service/${modelNamespace}/I${modelName}Service.cs`)
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
     info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
+    info(`Generate graphql ${modelNamespace}/graphql/GetAll${props.modelName}.cs`)
+    info(`Generate graphql ${modelNamespace}/graphql/GetSingle${props.modelName}.cs`)
   },
 }
