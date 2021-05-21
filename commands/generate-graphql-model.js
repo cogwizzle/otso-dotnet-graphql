@@ -34,6 +34,7 @@ module.exports = {
       parameters,
       template: { generate },
       print: { info },
+      filesystem: { read },
       prompt,
     } = toolbox
 
@@ -123,7 +124,7 @@ module.exports = {
 
     await generate({
       template: 'get-all.cs.ejs',
-      target: `${modelNamespace}/graphql/GetAll${props.modelName}.cs`,
+      target: `${modelNamespace}/graphql/GetAll${modelName}.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -134,7 +135,7 @@ module.exports = {
 
     await generate({
       template: 'get-single.cs.ejs',
-      target: `${modelNamespace}/graphql/GetSingle${props.modelName}.cs`,
+      target: `${modelNamespace}/graphql/GetSingle${modelName}.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -152,7 +153,7 @@ module.exports = {
     info(`Generate service at service/${modelNamespace}/I${modelName}Service.cs`)
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
     info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
-    info(`Generate graphql ${modelNamespace}/graphql/GetAll${props.modelName}.cs`)
-    info(`Generate graphql ${modelNamespace}/graphql/GetSingle${props.modelName}.cs`)
+    info(`Generate graphql ${modelNamespace}/graphql/GetAll${modelName}.cs`)
+    info(`Generate graphql ${modelNamespace}/graphql/GetSingle${modelName}.cs`)
   },
 }
