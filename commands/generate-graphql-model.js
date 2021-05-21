@@ -52,6 +52,8 @@ module.exports = {
     const modelName = pascalCase(results.name);
     const modelNamespace = pascalCase(results.namespace);
     const properties = await requestProperty(prompt);
+    const package = read('./package.json', 'json');
+    const packageName = pascalCase(package.name);
 
     await generate({
       template: 'model.cs.ejs',
@@ -60,6 +62,7 @@ module.exports = {
         modelName,
         modelNamespace,
         properties,
+        packageName,
       }
     })
 
@@ -70,6 +73,7 @@ module.exports = {
         modelName,
         modelNamespace,
         properties,
+        packageName,
       }
     })
 
@@ -80,6 +84,7 @@ module.exports = {
         modelName,
         modelNamespace,
         properties,
+        packageName,
       }
     })
 
@@ -90,6 +95,7 @@ module.exports = {
         modelName,
         modelNamespace,
         properties,
+        packageName,
       }
     })
 
@@ -100,6 +106,7 @@ module.exports = {
         modelName,
         modelNamespace,
         properties,
+        packageName,
       }
     })
 
@@ -109,7 +116,8 @@ module.exports = {
       props: {
         modelName,
         modelNamespace,
-        properties
+        properties,
+        packageName,
       },
     })
 

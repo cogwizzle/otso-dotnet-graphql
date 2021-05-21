@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace <%= props.modelNamespace %>.Data.Configuration
+namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data.Configuration
 {
   public class <%= props.modelName %>Configuration: IEntityTypeConfiguration<<%= props.modelName %>>
   {
