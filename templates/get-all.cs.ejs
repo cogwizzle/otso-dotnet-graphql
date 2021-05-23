@@ -7,7 +7,7 @@ namespace <%= props.packageName %>.GraphQL
   public class <%= props.modelName %>Query
   {
     public I<%= props.modelName %>Repository repository;
-    public GetAll<%= props.modelName %>(I<%= props.modelName %>Repository repository)
+    public <%= props.modelName %>Query(I<%= props.modelName %>Repository repository)
     {
       this.repository = repository;
     }
