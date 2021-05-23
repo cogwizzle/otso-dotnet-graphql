@@ -155,5 +155,25 @@ module.exports = {
     info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
     info(`Generate graphql ${modelNamespace}/graphql/GetAll${modelName}.cs`)
     info(`Generate graphql ${modelNamespace}/graphql/GetSingle${modelName}.cs`)
+    info(`Add this to the Startup.cs ConfigureServices
+=========================================
+services
+  .AddScoped<
+    ${packageName}.${modelNamespace}.I${modelName}Repository,
+    ${packageName}.${modelNamespace}.Data.${modelName}Repository
+  >();
+services
+  .AddTransient<
+    ${packageName}.${modelNamespace}.I${modelName}Service,
+    ${packageName}.${modelNamespace}.${modelName}Service
+  >();
+services
+  .AddGraphQLServer()
+  .AddQueryType<${packageName}.GraphQL.GetAll${modelName}>();
+services
+  .AddGraphQLServer()
+  .AddQueryType<${packageName}.GraphQL.Get${modelName}>();
+========================================
+`)
   },
 }

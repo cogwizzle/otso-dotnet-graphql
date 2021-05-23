@@ -15,5 +15,15 @@ module.exports = {
     run('dotnet add package HotChocolate.Data.EntityFramework')
     run('dotnet add package Microsoft.EntityFrameworkCore.Sqlite')
     info('Hot Chocolate added!')
+    info(`Add the following to the Startup.cs Configure function
+======================================
+app
+  .UseRouting()
+  .UseEndpoints(endpoints =>
+  {
+    endpoints.MapGraphQL();
+  });
+======================================
+`)
   },
 }
