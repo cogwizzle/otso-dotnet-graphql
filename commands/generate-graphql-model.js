@@ -169,6 +169,9 @@ services
 services
   .AddGraphQLServer()
   .AddQueryType<${packageName}.GraphQL.${modelName}Query>();
+services
+  .AddGraphQLServer()
+  .AddMutationType<${packageName}.GraphQL.${modelName}Mutation>();
 ========================================
 `)
   },
