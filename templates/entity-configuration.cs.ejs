@@ -12,7 +12,7 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data.Configuratio
 
       builder
         .Property(m => m.Id)
-        .UseIdentityColumn();
+        .ValueGeneratedOnAdd();
     }
   }
 }

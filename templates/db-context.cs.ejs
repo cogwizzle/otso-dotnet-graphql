@@ -4,9 +4,13 @@ namespace <%= props.packageName %>.Data
 {
   public class <%= props.packageName %>DbContext: DbContext
   {
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+      => options.UseSqlite(@"Data Source=test.db");
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
-      
+      /* builder
+        .ApplyConfiguration(new Demo.Vehicle.Data.Configuration.CarConfiguration()); */
     }
   }
 }

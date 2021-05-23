@@ -12,9 +12,9 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>
       this.repository = repository;
     }
 
-    public <%= props.modelName %> Get<%= props.modelName %>(int id)
+    public <%= props.modelName %> Get<%= props.modelName %>(int Id)
     {
-      return respository.Get<%= props.modelName %>(id);
+      return respository.Get<%= props.modelName %>(Id);
     }
 
     public IList<<%= props.modelName %>> Get<%= props.modelName %>s()
@@ -32,7 +32,7 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>
       return respository.Update<%= props.modelName %>(value);
     }
 
-    public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
+    public <%= props.modelName %> Delete<%= props.modelName %>(<%= props.modelName %> value)
     {
       return resository.Delete<%= props.modelName %>(value);
     }

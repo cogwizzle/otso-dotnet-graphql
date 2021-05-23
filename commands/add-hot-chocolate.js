@@ -14,6 +14,7 @@ module.exports = {
     run('dotnet add package HotChocolate.AspNetCore')
     run('dotnet add package HotChocolate.Data.EntityFramework')
     run('dotnet add package Microsoft.EntityFrameworkCore.Sqlite')
+    run('dotnet ef migrations add InitialCreate')
     info('Hot Chocolate added!')
     info(`Add the following to the Startup.cs Configure function
 ======================================

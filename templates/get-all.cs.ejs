@@ -1,17 +1,22 @@
+using <%= props.packageName %>.<%= props.modelNamespace %>;
 using <%= props.packageName %>.<%= props.modelNamespace %>.Data;
 
 namespace <%= props.packageName %>.GraphQL
 {
 
-  public class GetAll<%= props.modelName %>
+  public class <%= props.modelName %>Query
   {
     public I<%= props.modelName %>Repository repository;
     public GetAll<%= props.modelName %>(I<%= props.modelName %>Repository repository)
     {
       this.repository = repository;
     }
-    public IList<<%= props.modelName %>> Get<%= props.modelName %>(){
-      return this.repository.Get<%= props.modelname %>s();
+    public IList<<%= props.modelName %>> Get<%= props.modelName %>s(){
+      return this.repository.Get<%= props.modelName %>s();
+    }
+
+    public <%= props.modelName %> Get<%= props.modelName %>(int id){
+      return this.repository.Get<%= props.modelname %>(id);
     }
   }
 }

@@ -154,7 +154,6 @@ module.exports = {
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
     info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
     info(`Generate graphql ${modelNamespace}/graphql/GetAll${modelName}.cs`)
-    info(`Generate graphql ${modelNamespace}/graphql/GetSingle${modelName}.cs`)
     info(`Add this to the Startup.cs ConfigureServices
 =========================================
 services
@@ -169,10 +168,7 @@ services
   >();
 services
   .AddGraphQLServer()
-  .AddQueryType<${packageName}.GraphQL.GetAll${modelName}>();
-services
-  .AddGraphQLServer()
-  .AddQueryType<${packageName}.GraphQL.Get${modelName}>();
+  .AddQueryType<${packageName}.GraphQL.${modelName}Query>();
 ========================================
 `)
   },
