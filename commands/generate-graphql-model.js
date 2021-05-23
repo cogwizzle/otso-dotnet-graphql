@@ -36,7 +36,6 @@ module.exports = {
       print: { info },
       filesystem: { read },
       prompt,
-      filesystem: { read },
     } = toolbox
 
     const results = await prompt.ask([
