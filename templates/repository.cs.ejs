@@ -27,7 +27,7 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      const entity = dbContext.<%= props.modelName %>s.First(x => x.id = value.id);
+      var entity = dbContext.<%= props.modelName %>s.First(x => x.id = value.id);
 <%= props.properties.map((property) => 
 `      entity.${property.name} = value.${property.name};`
 ).join('\n') %>
