@@ -124,7 +124,7 @@ module.exports = {
 
     await generate({
       template: 'get-all.cs.ejs',
-      target: `${modelNamespace}/graphql/GetAll${modelName}.cs`,
+      target: `${modelNamespace}/graphql/${modelName}Query.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -134,8 +134,8 @@ module.exports = {
     })
 
     await generate({
-      template: 'get-single.cs.ejs',
-      target: `${modelNamespace}/graphql/GetSingle${modelName}.cs`,
+      template: 'mutation.cs.ejs',
+      target: `${modelNamespace}/graphql/${modelName}Mutation.cs`,
       props: {
         modelName,
         modelNamespace,
