@@ -35,6 +35,7 @@ module.exports = {
       template: { generate },
       print: { info },
       prompt,
+      filesystem: { read },
     } = toolbox
 
     const results = await prompt.ask([
