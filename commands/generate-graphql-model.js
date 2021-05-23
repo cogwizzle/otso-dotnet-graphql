@@ -124,7 +124,7 @@ module.exports = {
 
     await generate({
       template: 'get-all.cs.ejs',
-      target: `${modelNamespace}/graphql/GetAll${modelName}.cs`,
+      target: `${modelNamespace}/graphql/${modelName}Query.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -134,8 +134,8 @@ module.exports = {
     })
 
     await generate({
-      template: 'get-single.cs.ejs',
-      target: `${modelNamespace}/graphql/GetSingle${modelName}.cs`,
+      template: 'mutation.cs.ejs',
+      target: `${modelNamespace}/graphql/${modelName}Mutation.cs`,
       props: {
         modelName,
         modelNamespace,
@@ -154,6 +154,26 @@ module.exports = {
     info(`Generate service at service/${modelNamespace}/${modelName}Service.cs`)
     info(`Generate configuration at configuration/${modelNamespace}/${modelName}Configuration.cs`)
     info(`Generate graphql ${modelNamespace}/graphql/GetAll${modelName}.cs`)
-    info(`Generate graphql ${modelNamespace}/graphql/GetSingle${modelName}.cs`)
+    info(`Add this to the Startup.cs ConfigureServices
+=========================================
+services
+  .AddScoped<
+    ${packageName}.${modelNamespace}.I${modelName}Repository,
+    ${packageName}.${modelNamespace}.Data.${modelName}Repository
+  >();
+services
+  .AddTransient<
+    ${packageName}.${modelNamespace}.I${modelName}Service,
+    ${packageName}.${modelNamespace}.${modelName}Service
+  >();
+services
+  .AddGraphQLServer()
+  .AddQueryType<${packageName}.GraphQL.${modelName}Query>();
+services
+  .AddGraphQLServer()
+  .AddMutationType<${packageName}.GraphQL.${modelName}Mutation>();
+========================================
+`)
+    info('Run `dotnet ef database update`')
   },
 }

@@ -1,11 +1,13 @@
+using System.Collections.Generic;
+
 namespace <%= props.packageName %>.<%= props.modelNamespace %>
 {
   public interface I<%= props.modelName %>Service
   {
-    public <%= props.modelName %> Get<%= props.modelName %>();
+    public <%= props.modelName %> Get<%= props.modelName %>(int Id);
     public IList<<%= props.modelName %>> Get<%= props.modelName %>s();
     public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value);
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value);
-    public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value);
+    public <%= props.modelName %> Delete<%= props.modelName %>(<%= props.modelName %> value);
   }
 }

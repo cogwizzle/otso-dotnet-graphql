@@ -24,5 +24,12 @@ module.exports = {
     });
 
     info(`Created DB context at ${packageName}DbContext.cs`)
+    info(`Add this to the Startup.cs ConfigureServices
+=========================================
+services
+  .AddDbContext<${packageName}.Data.${packageName}DbContext>();
+========================================
+`)
+    info('Run `dotnet ef migrations add InitialCreate`')
   }
 }

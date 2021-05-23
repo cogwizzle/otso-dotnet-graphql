@@ -1,0 +1,19 @@
+using <%= props.packageName %>.<%= props.modelNamespace %>;
+using <%= props.packageName %>.<%= props.modelNamespace %>.Data;
+
+namespace <%= props.packageName %>.GraphQL
+{
+  public class <%= props.modelName %>Mutation
+  {
+    public I<%= props.modelName %>Repository repository;
+    public <%= props.modelName %>Mutation(I<%= props.modelName %>Repository repository)
+    {
+      this.repository = repository;
+    }
+
+    public void Create<%= props.modelName %>(<%= props.modelName %> entity)
+    {
+      this.repository.Create<%= props.modelName %>(entity);
+    }
+  }
+}

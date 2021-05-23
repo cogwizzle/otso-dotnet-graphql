@@ -1,22 +1,25 @@
 using System.Collections.Generic;
+using System.Linq;
+using <%= props.packageName %>.Data;
 
 namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data
 {
   public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
   {
-    public <%= props.modelName %>Repository(DbContext dbContext)
+    public <%= props.packageName %>DbContext dbContext;
+    public <%= props.modelName %>Repository(<%= props.packageName %>DbContext dbContext)
     {
       this.dbContext = dbContext;
     }
 
-    public <%= props.modelName %> Get<%= props.modelName %>(int id)
+    public <%= props.modelName %> Get<%= props.modelName %>(int Id)
     {
-      return dbContext.<%= props.modelName %>s.First((x => x.id == id));
+      return dbContext.<%= props.modelName %>s.First((x => x.Id == Id));
     }
 
     public IList<<%= props.modelName %>> Get<%= props.modelName %>s()
     {
-      return dbContext.<%= props.modelName %>s;
+      return dbContext.<%= props.modelName %>s.ToList();
     }
 
     public <%= props.modelName %> Create<%= props.modelName %>(<%= props.modelName %> value)
@@ -27,14 +30,15 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data
 
     public <%= props.modelName %> Update<%= props.modelName %>(<%= props.modelName %> value)
     {
-      const entity = dbContext.<%= props.modelName %>s.First(x => x.id = value.id);
+      var entity = dbContext.<%= props.modelName %>s.First(x => x.Id = value.Id);
 <%= props.properties.map((property) => 
 `      entity.${property.name} = value.${property.name};`
 ).join('\n') %>
       dbContext.<%- props.modelName %>s.Update(entity);
+      return entity;
     }
 
-    public <%= props.modelName %> Delete<%= props.modelname %>(<%= props.modelName %> value)
+    public <%= props.modelName %> Delete<%= props.modelName %>(<%= props.modelName %> value)
     {
       dbContext.<%= props.modelName %>s.Remove(value);
       return value;
