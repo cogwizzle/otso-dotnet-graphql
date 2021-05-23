@@ -174,5 +174,6 @@ services
   .AddMutationType<${packageName}.GraphQL.${modelName}Mutation>();
 ========================================
 `)
+    info('Run `dotnet ef database update`')
   },
 }

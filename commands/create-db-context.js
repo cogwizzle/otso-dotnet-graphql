@@ -30,5 +30,6 @@ services
   .AddDbContext<${packageName}.Data.${packageName}DbContext>();
 ========================================
 `)
+    info('Run `dotnet ef migrations add InitialCreate`')
   }
 }
