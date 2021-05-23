@@ -2,6 +2,7 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>
 {
   public class <%= props.modelName %>
   {
+    public int id { get; set; }
 <%= props.properties.map((property) => 
 `    public ${property.type} ${property.name} { get; set; }`
 ).join('\n') %>
