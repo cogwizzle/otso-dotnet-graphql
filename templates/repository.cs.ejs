@@ -6,7 +6,7 @@ namespace <%= props.packageName %>.<%= props.modelNamespace %>.Data
 {
   public class <%= props.modelName %>Repository: I<%= props.modelName %>Repository
   {
-    public <%= props.packageName %>DbContext dbContext;
+    public readonly <%= props.packageName %>DbContext dbContext;
     public <%= props.modelName %>Repository(<%= props.packageName %>DbContext dbContext)
     {
       this.dbContext = dbContext;
